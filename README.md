@@ -1,96 +1,90 @@
-# Team Task Manager
+# 🚀 Team Task Manager
 
-Modern full-stack Team Task Manager built with Next.js App Router, NextAuth, MongoDB, and role-based workflows for Admin and Member users.
-
----
-
-## Developer
-
-**Shubh Shukla**
+A modern full-stack Team Task Manager built with Next.js, MongoDB, NextAuth, and TypeScript.  
+Manage teams, projects, and tasks with secure authentication and role-based access.
 
 ---
 
-## Highlights
+## ✨ Features
 
-- Secure auth with credentials (email/password) and bcrypt hashing
-- Role-based access control (`admin` / `member`)
-- Team and project management
-- Task assignment + status tracking (`Todo`, `In Progress`, `Done`)
-- Admin overview for assigned work monitoring
-- Dashboard with totals, overdue count, and progress indicators
-- Attractive gradient UI, dark/light mode, hover interactions, toasts
-- Forgot password + reset password flow (SMTP-based)
-
----
-
-## Tech Stack
-
-- **Framework:** Next.js (App Router), React, TypeScript
-- **Auth:** NextAuth (Credentials)
-- **Database:** MongoDB + Mongoose
-- **Validation:** Zod
-- **Styling:** Tailwind CSS v4
-- **Notifications:** React Hot Toast
+- 🔐 Secure Authentication
+- 👥 Admin & Member Roles
+- 📁 Team & Project Management
+- ✅ Task Assignment & Tracking
+- 📅 Due Date Support
+- 📊 Dashboard Analytics
+- 🌙 Dark / Light Mode
+- 📧 Forgot & Reset Password
+- ⚡ Responsive Modern UI
 
 ---
 
-## Core Features
+# 🛠️ Tech Stack
 
-### Authentication
-- Signup with name/email/password
-- Separate Member and Admin login pages
-- Email normalization (lowercase handling)
-- Forgot/Reset password flow
-
-### Role-Based Permissions
-- **Admin**
-  - Create projects
-  - Assign tasks
-  - Monitor team tasks from admin overview
-- **Member**
-  - View only assigned tasks
-  - Update own task status
-
-### Team & Project Flow
-- Create team
-- Join team using team ID
-- Create projects under teams
-
-### Task Management
-- Create and assign tasks
-- Due date support
-- Status updates with live UI refresh
-- Overdue highlighting
+| Technology | Usage |
+|---|---|
+| Next.js | Full Stack Framework |
+| TypeScript | Type Safety |
+| MongoDB | Database |
+| Mongoose | ODM |
+| NextAuth | Authentication |
+| Tailwind CSS | Styling |
+| Zod | Validation |
+| React Hot Toast | Notifications |
 
 ---
 
-## Folder Structure
+# 🔐 Authentication
 
-- `src/app/(app)` - protected app pages (`dashboard`, `projects`, `tasks`)
-- `src/app/api` - REST API routes
-- `src/models` - Mongoose models
-- `src/lib` - db, auth, helper utilities
-- `src/auth.ts` - NextAuth config
+- User Signup & Login
+- Password Hashing with bcrypt
+- Forgot Password Flow
+- Reset Password via Email
 
 ---
 
-## Environment Variables
+# 👥 User Roles
 
-Copy `.env.example` to `.env.local`:
+## Admin
+- Create Projects
+- Assign Tasks
+- Manage Teams
+- Track Progress
+
+## Member
+- View Assigned Tasks
+- Update Task Status
+- Monitor Work Progress
+
+---
+
+# 📂 Folder Structure
 
 ```bash
-cp .env.example .env.local
+src/
+├── app/
+├── api/
+├── components/
+├── models/
+├── lib/
+├── hooks/
+└── auth.ts
 ```
 
-Then configure:
+---
+
+# ⚙️ Environment Variables
+
+Create `.env.local` file:
 
 ```env
 MONGODB_URI=
+
 NEXTAUTH_SECRET=
 NEXTAUTH_URL=http://localhost:3000
 
-# optional for reset-password emails
 APP_URL=http://localhost:3000
+
 SMTP_HOST=smtp.gmail.com
 SMTP_PORT=465
 SMTP_USER=your_email@gmail.com
@@ -100,51 +94,21 @@ SMTP_FROM="Team Task Manager <your_email@gmail.com>"
 
 ---
 
-## Run Locally
+# ▶️ Run Locally
+
+Install dependencies:
 
 ```bash
 npm install
+```
+
+Run development server:
+
+```bash
 npm run dev
 ```
 
-Open: `http://localhost:3000`
-
-Health check: `http://localhost:3000/api/health`
-
----
-
-## API Overview
-
-### Auth
-- `POST /api/auth/register`
-- `GET/POST /api/auth/[...nextauth]`
-- `GET /api/auth/exists`
-- `POST /api/auth/forgot-password`
-- `POST /api/auth/reset-password`
-
-### Teams
-- `GET /api/teams`
-- `POST /api/teams`
-- `POST /api/teams/:teamId/join`
-
-### Projects
-- `GET /api/projects`
-- `POST /api/projects` (admin)
-
-### Tasks
-- `GET /api/tasks`
-- `POST /api/tasks` (admin)
-- `PATCH /api/tasks/:taskId/status`
-
-### Users
-- `GET /api/users?teamId=...`
-- `GET /api/users` (admin)
-
----
-
-
-
-Build and start commands:
+Production build:
 
 ```bash
 npm run build
@@ -153,32 +117,86 @@ npm run start
 
 ---
 
-## Screenshots
+# 🌐 API Routes
 
-### Admin View
+## Auth APIs
 
-<p align="center">
-  <img src="./Screenshots/login_admin.png" alt="Admin Login" width="420" />
-  <img src="./Screenshots/dashboard_admin.png" alt="Admin Dashboard" width="420" />
-</p>
-<p align="center">
-  <img src="./Screenshots/project_admin.png" alt="Admin Projects" width="420" />
-  <img src="./Screenshots/task_admin.png" alt="Admin Tasks" width="420" />
-</p>
+```bash
+POST /api/auth/register
+POST /api/auth/forgot-password
+POST /api/auth/reset-password
+```
 
-### Member View
+## Team APIs
 
-<p align="center">
-  <img src="./Screenshots/login_members.png" alt="Member Login" width="420" />
-  <img src="./Screenshots/dashboard_members.png" alt="Member Dashboard" width="420" />
-</p>
-<p align="center">
-  <img src="./Screenshots/projects_member.png" alt="Member Projects" width="420" />
-  <img src="./Screenshots/tasks_member.png" alt="Member Tasks" width="420" />
-</p>
+```bash
+GET /api/teams
+POST /api/teams
+POST /api/teams/:teamId/join
+```
+
+## Project APIs
+
+```bash
+GET /api/projects
+POST /api/projects
+```
+
+## Task APIs
+
+```bash
+GET /api/tasks
+POST /api/tasks
+PATCH /api/tasks/:taskId/status
+```
 
 ---
 
-## License
+# 📊 Dashboard Features
 
-For personal/educational use.
+- Total Tasks Overview
+- Pending & Completed Tasks
+- Overdue Task Highlighting
+- Project Progress Tracking
+
+---
+
+# 📸 Screenshots
+
+## Admin Panel
+- Admin Login
+- Dashboard
+- Project Management
+- Task Management
+
+## Member Panel
+- Member Login
+- Dashboard
+- Assigned Tasks
+- Project Access
+
+---
+
+# 🚀 Local Access
+
+```bash
+http://localhost:3000
+```
+
+Health Check:
+
+```bash
+http://localhost:3000/api/health
+```
+
+---
+
+# 👨‍💻 Developer
+
+## Ayush Singh
+
+---
+
+# 📄 License
+
+This project is made for learning and portfolio purposes.
